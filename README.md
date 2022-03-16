@@ -61,10 +61,6 @@ Remember to install `@parcel/config-default` and configure `.parcelrc`:
 
 See [API documentation](https://www.pdftron.com/documentation/web/guides/ui/apis).
 
-## Contributing
-
-See [contributing](./CONTRIBUTING.md).
-
 ## License
 
 See [license](./LICENSE).
