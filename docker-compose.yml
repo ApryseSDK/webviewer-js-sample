@@ -1,0 +1,23 @@
+services:
+  pdftron-wvserver:
+    image: "pdftron/webviewer-server:latest"
+    container_name: 'pdftron-wvserver'
+    restart: unless-stopped
+    ports:
+      - 0.0.0.0:8090:8090
+    volumes:
+      - type: volume
+        source: pdftron-tomcat-data
+        target: /usr/local/apache-tomcat/static_data
+    ulimits:
+      nofile:
+        soft: 64000
+        hard: 64000
+    environment:
+      TRN_PDFNET_KEY: "${YOSHIE_PDFTRON_WEBVIEWER_LICENCE_KEY}"
+      JAVA_OPTS: '-Djava.library.path=/usr/lib:/usr/local/tcnative/lib:/usr/local/apache-tomcat/bin:/usr/local/apache-tomcat/lib:/usr/lib/x86_64-linux-gnu -Xmx7G'
+      INCLUDE_DEMO: 'false'
+      TRN_DEBUG_MODE: 'false'
+
+volumes:
+  pdftron-tomcat-data:

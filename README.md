@@ -1,20 +1,33 @@
-# WebViewer - JS Sample
+# WebViewer Server API Wrapper / Bugreport
 
-[WebViewer](https://www.pdftron.com/documentation/web/) is a powerful JavaScript-based PDF Library that's part of the [PDFTron SDK](https://www.pdftron.com). It provides a slick out-of-the-box responsive UI that interacts with the core library to view, annotate and manipulate PDFs, MS Office, videos, images, and CAD that can be embedded into any web project.
+ getPDF does not include filled in Form Fields
 
-![WebViewer UI](https://www.pdftron.com/downloads/pl/webviewer-ui.png)
+ This demo app is based on WebViewer - JS Sample (https://github.com/PDFTron/webviewer-js-sample)
 
-This repo is specifically designed for any users interested in integrating WebViewer into a vanilla JS project.
+## Summary
 
-## Demo
+ The [getPDF](https://www.pdftron.com/documentation/web/guides/wv-server-wrapper/#getpdf) function of WebViewer Server API Wrapper 
+ does not seem to include the Text entered into Form fields, even when this data is correctly passed in the xfdf String of the options object.
 
-You can explore all of the functionality in our [showcase](https://www.pdftron.com/webviewer/demo/).
+## Demo App
+
+This Demo includes a docker-compose file which starts a local instance of the latest Webviewer Server.
+
+The javascript/parcel app creates an instance of Webviewer, and loads an example
+pdf-form document which is hosted on a cloudfront URL. 
+A custom action button is added to the UI, which kicks of the following:
+  * calls the annotationManager.exportAnnotations function to get the xfdf string,
+  which does include the data of the filled in form fields
+  * doc-URL and xfdf string are then passed in to the WebViewerServer.getPDF API,
+    and the conversion result Uri is logged to the Javascript console.
 
 ## Initial setup
 
-Before you begin, make sure your development environment includes [Node.js](https://nodejs.org/en/).
+Before you begin, make sure your development environment includes 
+  * [Node.js](https://nodejs.org/en/).
+  * [docker compose](https://docs.docker.com/compose/install/)
 
-## Install
+### Install
 
 ```
 git clone https://github.com/PDFTron/webviewer-js-sample.git
@@ -22,46 +35,31 @@ cd webviewer-js-sample
 npm install
 ```
 
-## Run
+Create a `.env` file containing the following key:
+```properties
+YOSHIE_PDFTRON_WEBVIEWER_LICENCE_KEY="..."
+```
+
+fill in your Pdftron licence data
+
+
+## Reproduce Problem (Form Field data not exported)
 
 ```
+docker compose up -d
 npm start
 ```
 
-After the app starts, you will be able to see WebViewer running on `localhost:1234`.
+After the app starts, you will be able to see WebViewer running on `localhost:1234`,
+with the example "PDF Form Example" document loaded.
 
-## Static Resources
 
-WebViewer requires static resources. [parcel-reporter-multiple-static-file-copier](https://www.npmjs.com/package/parcel-reporter-multiple-static-file-copier) does the job for us by copying the resources into statically served directory:
 
-```
-  "multipleStaticFileCopier": [
-    {
-      "origin": "node_modules/@pdftron/webviewer/public",
-      "destination": "dist/public/webviewer"
-    }
-  ]
-```
+  * Open Browser Devtools / Console
+  * Fill in "Given Name" form field in the document
+  * Click the Custom Action Button in the top right
+  * Notice how the xfdf string logged to the console does include 
+   the data for the filled in form field.
+  * Click on the getPDF Result Uri which is logged to the console.
+    The generated Document from does not include the filled in form data.
 
-You can manually copy it, use a `postinstall` script or leverage parcel.
-
-Remember to install `@parcel/config-default` and configure `.parcelrc`:
-
-```
-{
-  "extends": "@parcel/config-default",
-  "reporters": [
-    "...",
-    "parcel-reporter-multiple-static-file-copier"
-  ]
-}
-```
-
-## WebViewer APIs
-
-See [API documentation](https://www.pdftron.com/documentation/web/guides/ui/apis).
-
-## License
-
-See [license](./LICENSE).
-![](https://onepixel.pdftron.com/webviewer-react-sample)
