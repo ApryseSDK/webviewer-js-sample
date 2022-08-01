@@ -7,16 +7,6 @@ const formExampleDocUrl = 'https://d2w8cy4i4z79x8.cloudfront.net/OoPdfFormExampl
 const element = document.getElementById('viewer');
 annotationsLoaded = false;
 
-const newActionButton = {
-  type: 'actionButton',
-  img: 'share-svgrepo-com',
-  onClick: () => {
-    alert('Hello world!');
-  },
-  dataElement: 'alertButton',
-  hidden: [ 'mobile' ]
-};
-
 const onLoad = async (instance) => {
   const { documentViewer, annotationManager, Annotations } = instance.Core;
 
