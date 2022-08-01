@@ -48,8 +48,7 @@ const onLoad = async (instance) => {
 WebViewer(
   {
     path: '/public/webviewer',
-    initialDoc:
-      'https://d2w8cy4i4z79x8.cloudfront.net/OoPdfFormExample.pdf',
+    initialDoc: formExampleDocUrl,
     licenseKey: YOSHIE_PDFTRON_WEBVIEWER_LICENCE_KEY
   },
   element
