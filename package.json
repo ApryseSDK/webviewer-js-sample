@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/PDFTron/webviewer-js-sample#readme",
   "dependencies": {
-    "@pdftron/webviewer": "^8.3.2"
+    "@pdftron/webviewer": "^10.0.0"
   },
   "devDependencies": {
     "@parcel/config-default": "^2.3.2",
