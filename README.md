@@ -49,7 +49,7 @@ After the app starts, you will be able to see a WebViewer running on `localhost:
 
 ## Static Resources
 
-`WebViewer` requires static resources created in the `dist` folder. Make sure the `origin` and `destination` are specified as below in the `package.json`,
+`WebViewer` requires static resources created in the `dist` folder. Make sure the `origin` and `destination` are specified as below in the `package.json`.
 
 ```
   "multipleStaticFileCopier": [
@@ -60,11 +60,10 @@ After the app starts, you will be able to see a WebViewer running on `localhost:
   ]
 ```
 
-The `package.json` files contains the `start` and `build` scripts. The only script to call is the `start` to run the app out-of-the-box. The `build` is just to allow copying of resources to  
+The `package.json` file contains the `start` and `build` scripts. The only script to call is the `start` to run the app out-of-the-box.   
 
 ```
-    "start": "parcel index.html --open http://localhost:1234",
-    "build": "parcel build",
+    "start": "parcel index.html --open http://localhost:1234"
 ```
 
 ## WebViewer APIs
