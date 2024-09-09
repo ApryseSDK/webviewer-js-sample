@@ -2,11 +2,12 @@
   "name": "webviewer-js-sample",
   "version": "1.0.0",
   "description": "A simple JS app to demonstrate how to embed PDFTron's WebViewer",
-  "main": "index.js",
+  "source": "index.js",
+  "main": "test/index.js",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html --open http://localhost:1234",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,8 @@
     "@pdftron/webviewer": "^10.0.0"
   },
   "devDependencies": {
-    "@parcel/config-default": "^2.3.2",
-    "parcel": "^2.3.2",
+    "@parcel/config-default": "^2.12.0",
+    "parcel": "^2.12.0",
     "parcel-reporter-multiple-static-file-copier": "^1.0.5"
   },
   "multipleStaticFileCopier": [
