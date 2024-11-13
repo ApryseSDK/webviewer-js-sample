@@ -8,7 +8,7 @@ This repo is specifically designed for any users interested in integrating WebVi
 
 ## Demo
 
-You can explore all of the functionality in our [showcase](https://www.pdftron.com/webviewer/demo/).
+You can explore all of the functionality in our [showcase](https://showcase.apryse.com/).
 
 ## Initial Setup
 
@@ -22,7 +22,7 @@ Before you begin, make sure your development environment includes [Node.js and n
 ## Install
 
 ```
-git clone https://github.com/PDFTron/webviewer-js-sample.git
+git clone https://github.com/ApryseSDK/webviewer-js-sample.git
 cd webviewer-js-sample
 npm install
 ```
@@ -60,7 +60,7 @@ After the app starts, you will be able to see a WebViewer running on `localhost:
   ]
 ```
 
-The `package.json` file contains the `start` and `build` scripts. The only script to call is the `start` to run the app out-of-the-box.   
+The `package.json` file contains the `start` and `build` scripts. The only script to call is the `start` to run the app out-of-the-box.
 
 ```
     "start": "parcel index.html --open http://localhost:1234"
